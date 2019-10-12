@@ -11,9 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 @Entity
 @Table(name = "transferencia")
-public class Transferencia extends Auditor<Long> implements Serializable{
+@Audited	
+public class Transferencia  implements Serializable{
 
 	/**
 	 * 

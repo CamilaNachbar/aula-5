@@ -3,9 +3,12 @@ package br.com;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"br.com.entity.**", "br.com.repository.**", "br.com.controller.**", "br.com.service.**"})
+@EnableJpaAuditing
+@ComponentScan(basePackages = { "br.com.entity.**", "br.com.repository.**", "br.com.controller.**", "br.com.service.**",
+		"br.com.serviceImpl" })
 public class Aula5Application {
 
 	public static void main(String[] args) {

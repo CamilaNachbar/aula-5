@@ -3,19 +3,18 @@ package br.com.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "conta")
-public class Conta extends Auditor<Long> implements Serializable{
+public class Conta extends Auditor<Long> implements Serializable {
 
 	/**
 	 * 
@@ -27,12 +26,15 @@ public class Conta extends Auditor<Long> implements Serializable{
 	private Long idConta;
 
 	@Column(name = "conta_numero")
+	@Min(value = 8)
 	private Long numero;
 
 	@Column(name = "conta_agencia")
+	@Min(value = 3)
 	private Long agencia;
 
 	@Column(name = "conta_digito")
+	@Min(value = 2)
 	private Long digito;
 
 	@Column(name = "conta_limite")
@@ -44,8 +46,7 @@ public class Conta extends Auditor<Long> implements Serializable{
 	@Column(name = "conta_ativa")
 	private Boolean ativa;
 
-    @OneToOne(mappedBy = "conta", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
+	@OneToOne(mappedBy = "conta")
 	private Pessoa pessoa;
 
 	public Long getIdConta() {

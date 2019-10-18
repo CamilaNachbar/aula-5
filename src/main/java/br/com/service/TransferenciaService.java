@@ -10,11 +10,12 @@ import org.springframework.stereotype.Service;
 
 import br.com.entity.Conta;
 import br.com.entity.Transferencia;
-import br.com.exception.ValidationException;
+import br.com.exception.ResourceNotFoundException;
 import br.com.repository.ContaRepository;
 import br.com.repository.TransferenciaRepository;
 import br.com.serviceImpl.InterfaceService;
 import br.com.serviceImpl.InterfaceTransferencia;
+import br.com.utils.EnumValidationException;
 
 @Service
 public class TransferenciaService implements InterfaceTransferencia, InterfaceService {
@@ -26,14 +27,14 @@ public class TransferenciaService implements InterfaceTransferencia, InterfaceSe
 	private ContaRepository contaRepository;
 
 	@Override
-	public void salvar(Transferencia transferencia) throws ValidationException {
+	public void salvar(Transferencia transferencia) throws ResourceNotFoundException {
 		// autor da transferencia tem saldo + limite, conta esta habilitada,
 		// beneficiario com conta habilitada
 		// transferencia maior que 100k
 		if (validarTransferencia(transferencia)) {
 			transferenciaRepository.save(transferencia);
 		} else {
-			throw new ValidationException("Erro na validacao");
+			throw new ResourceNotFoundException(EnumValidationException.ERROR_SALVAR_TRANSFERENCIA.getDescricao());
 		}
 	}
 

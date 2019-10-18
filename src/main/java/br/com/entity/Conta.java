@@ -26,15 +26,15 @@ public class Conta extends Auditor<Long> implements Serializable {
 	private Long idConta;
 
 	@Column(name = "conta_numero")
-	@Min(value = 8)
+	@Min(value = 8, message = "Numero conta deve ter no minino 8 digitos")
 	private Long numero;
 
 	@Column(name = "conta_agencia")
-	@Min(value = 3)
+	@Min(value = 3, message = "Agencia deve ter no minino 3 digitos")
 	private Long agencia;
 
 	@Column(name = "conta_digito")
-	@Min(value = 2)
+	@Min(value = 2, message = "Digito conta deve ter no minino 2 digitos")
 	private Long digito;
 
 	@Column(name = "conta_limite")
@@ -112,5 +112,7 @@ public class Conta extends Auditor<Long> implements Serializable {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+
+	
 
 }

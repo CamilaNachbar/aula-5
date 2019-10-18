@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 @EnableJpaAuditing
 @ComponentScan(basePackages = { "br.com.entity.**", "br.com.repository.**", "br.com.controller.**", "br.com.service.**",
-		"br.com.serviceImpl" })
+		"br.com.serviceImpl", "br.com.exception" })
 public class Aula5Application {
 
 	public static void main(String[] args) {
